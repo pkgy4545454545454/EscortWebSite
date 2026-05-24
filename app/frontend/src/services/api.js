@@ -48,6 +48,16 @@ export const enterpriseAPI = {
   update: (id, data) => axios.put(`${API}/enterprises/${id}`, data, { headers: getAuthHeaders() }),
 };
 
+export const gallerieAPI = {
+  list: (params) => axios.get(`${API}/gallerie`, { params: { limit: 500, ...params } }),
+  get: (id) => axios.get(`${API}/gallerie/${id}`),
+  getById: (id) => axios.get(`${API}/gallerie/${id}`),
+  create: (data) => axios.post(`${API}/gallerie`, data, { headers: getAuthHeaders() }),
+  update: (id, data) => axios.put(`${API}/gallerie/${id}`, data, { headers: getAuthHeaders() }),
+};
+
+
+
 // Services & Products
 export const servicesProductsAPI = {
   list: (params) => axios.get(`${API}/services-products`, { params }),

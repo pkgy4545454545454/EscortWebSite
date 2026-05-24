@@ -9,9 +9,9 @@ const SplashScreen = ({ onComplete }) => {
 
   // Reduced phrases for faster loading (3 seconds total)
   const phrases = [
-    "Découvrez les meilleurs prestataires...",
-    "Beauté • Bien-être • Artisanat",
-    "Titelli - Votre marketplace locale"
+    "Découvre la cochonne numero 1 de suisse...",
+    "soft • Extreme • Violence",
+    "Esclava - Votre pute de luxe"
   ];
 
   // Optimized: 3 second splash screen
@@ -192,7 +192,7 @@ const SplashScreen = ({ onComplete }) => {
             justifyContent: 'center',
           }}
         >
-          Titelli
+          Esclava
         </h1>
       </div>
 

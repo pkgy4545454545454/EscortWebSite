@@ -189,12 +189,15 @@ const vid = 'bg.mp4'
           <h2 className="text-2xl font-bold text-white mb-8 justify-center" style={{ fontFamily: 'Playfair Display, serif' }}>
             Pour voir toutes les vidéos illimités , devenez VIP ! 
           </h2>
-          <button>   <Link 
-              to={abo}
+          <button>
+            <Link
+              to="/auth"
               className="px-8 py-4 bg-gradient-to-r from-pink-500 to-red-500 text-black font-bold rounded-xl hover:from-yellow-600 hover:to-orange-600 transition-all flex items-center justify-center gap-2"
             >
-              je Devien VIP ! <div className="w-5 h-5" />
-            </Link></button>
+              je Deviens VIP ! 
+              <div className="w-5 h-5"></div>
+            </Link>
+            </button>
         </div>
 
 

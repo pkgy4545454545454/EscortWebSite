@@ -33,10 +33,7 @@ const Footer = () => {
           <p className="text-gray-500 text-sm">
             © {currentYear} Esclava. Tous droits réservés.
           </p>
-          <div className="flex items-center gap-4">
-            <Link to="/cgv" className="text-gray-500 hover:text-gray-300 text-sm transition-colors">CGV</Link>
-            <Link to="/mentions-legales" className="text-gray-500 hover:text-gray-300 text-sm transition-colors">Mentions légales</Link>
-          </div>
+  
         </div>
       </div>
     </footer>

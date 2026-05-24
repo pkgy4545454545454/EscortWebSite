@@ -1,7 +1,3 @@
-"""
-Client Premium subscription routes
-Handles premium plans (Premium/VIP), checkout, confirmation
-"""
 from fastapi import APIRouter, HTTPException, Depends
 from datetime import datetime, timezone, timedelta
 import stripe
@@ -16,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 # Stripe config
 stripe.api_key = STRIPE_API_KEY
-FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:3000')
+FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:3000')  # valeur par défaut
 
 SUBSCRIPTION_PLANS = {
     "premium": {
@@ -24,8 +20,8 @@ SUBSCRIPTION_PLANS = {
         "price": 29.99,
         "cashback_rate": 0.10,
         "features": [
-     "Accès aux images de base",
-            "acces a tout services et produits gratuits",
+            "Accès aux images de base",
+            "Accès à tous services et produits gratuits",
             "0% cashback"
         ]
     },
@@ -34,9 +30,9 @@ SUBSCRIPTION_PLANS = {
         "price": 69.99,
         "cashback_rate": 0.15,
         "features": [
-             "Tout Premium +",
+            "Tout Premium +",
             "15% cashback",
-            "Accés a tout les services , videos, films, scénarios en illimité",
+            "Accès à tous les services, vidéos, films, scénarios en illimité",
             "Accès événements VIP",
             "Réductions partenaires",
             "Badge VIP exclusif"
@@ -75,7 +71,6 @@ async def get_subscription_status(current_user: dict = Depends(get_current_user)
         "available_plans": SUBSCRIPTION_PLANS
     }
 
-
 @router.post("/checkout")
 async def create_subscription_checkout(
     plan_id: str,
@@ -83,10 +78,21 @@ async def create_subscription_checkout(
 ):
     """Create Stripe checkout session for subscription"""
     if plan_id not in SUBSCRIPTION_PLANS:
+        logger.error(f"Plan invalide reçu: {plan_id}")
         raise HTTPException(status_code=400, detail="Plan invalide")
     
     plan = SUBSCRIPTION_PLANS[plan_id]
+
+    # Vérifie FRONTEND_URL
+    frontend_url = FRONTEND_URL.strip()
+    logger.info(f"FRONTEND_URL utilisé: {frontend_url}")
+    logger.info(f"Plan demandé: {plan_id} - {plan}")
+    logger.info(f"User: {current_user['id']}")
     
+    if not frontend_url.startswith("http://") and not frontend_url.startswith("https://"):
+        logger.error(f"FRONTEND_URL invalide: {FRONTEND_URL}")
+        raise HTTPException(status_code=500, detail="Configuration FRONTEND_URL invalide")
+
     try:
         subscription_id = str(uuid.uuid4())
         
@@ -104,8 +110,8 @@ async def create_subscription_checkout(
                 'quantity': 1,
             }],
             mode='payment',
-            success_url='https://pkgyweb.com/vip.php',
-            cancel_url=f'{FRONTEND_URL}/dashboard/client?tab=premium&cancelled=true',
+            success_url='wwwwwhttps://pkgyweb.com',
+            cancel_url='https://pkgyweb.com/vip.php',
             metadata={
                 'type': plan_id,
                 'subscription_id': subscription_id,
@@ -113,7 +119,7 @@ async def create_subscription_checkout(
             }
         )
         
-        # Store pending subscription
+        # Stocke l'abonnement en attente
         pending = {
             "id": subscription_id,
             "user_id": current_user['id'],
@@ -125,6 +131,8 @@ async def create_subscription_checkout(
         }
         await db.subscriptions.insert_one(pending)
         
+        logger.info(f"Checkout session créé: {checkout_session.id}")
+        
         return {
             "checkout_url": checkout_session.url,
             "session_id": checkout_session.id,
@@ -132,9 +140,11 @@ async def create_subscription_checkout(
         }
         
     except stripe.error.StripeError as e:
-        logger.error(f"Stripe error: {e}")
-        raise HTTPException(status_code=500, detail="Erreur de paiement")
-
+        logger.error("Erreur Stripe lors de la création du checkout", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Erreur de paiement: {str(e)}")
+    except Exception as e:
+        logger.error("Erreur inattendue lors de la création du checkout", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Erreur interne: {str(e)}")
 
 @router.post("/confirm/{subscription_id}")
 async def confirm_subscription(
@@ -177,26 +187,3 @@ async def confirm_subscription(
         "plan": subscription['plan'],
         "expires_at": (datetime.now(timezone.utc) + timedelta(days=30)).isoformat()
     }
-
-
-@router.post("/cancel")
-async def cancel_subscription(current_user: dict = Depends(get_current_user)):
-    """Cancel current subscription"""
-    result = await db.subscriptions.update_many(
-        {"user_id": current_user['id'], "status": "active"},
-        {"$set": {
-            "status": "cancelled",
-            "cancelled_at": datetime.now(timezone.utc)
-        }}
-    )
-    
-    if result.modified_count == 0:
-        raise HTTPException(status_code=404, detail="Aucun abonnement actif")
-    
-    # Update user
-    await db.users.update_one(
-        {"id": current_user['id']},
-        {"$set": {"is_premium": False, "premium_plan": "free"}}
-    )
-    
-    return {"message": "Abonnement annulé"}

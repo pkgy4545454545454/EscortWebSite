@@ -234,7 +234,7 @@ const AuthPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] flex" data-testid="auth-page">
+    <div className="min-h-screen bg-[pink] flex" data-testid="auth-page">
       {/* Left Side - Image/Branding */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <img 
@@ -293,18 +293,18 @@ const AuthPage = () => {
           </Link>
 
           <div className="lg:hidden flex items-center gap-3 mb-8">
-            <img src="/logo_titelli.png" alt="Titelli" className="w-10 h-10 object-contain" />
+            <img src="/esclava.png" alt="Titelli" className="w-10 h-10 object-contain" />
             <span className="text-xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Titelli
+              Esclava
             </span>
           </div>
 
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h2 className="text-3xl font-bold text-black mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
               {isLogin ? 'Connexion' : step === 1 ? 'Créer un compte' : 'Sécurité du compte'}
             </h2>
-            <p className="text-gray-400">
-              {isLogin ? 'Bon retour parmi nous !' : step === 1 ? 'Commençons par vos informations' : 'Protégez votre compte'}
+            <p className="text-black">
+              {isLogin ? 'Vien vite !' : step === 1 ? 'Commençons par vos informations' : 'Protégez votre compte'}
             </p>
           </div>
 
@@ -335,19 +335,7 @@ const AuthPage = () => {
                 <span className="font-medium text-sm">Client</span>
               </button>
            
-              <button
-                type="button"
-                onClick={() => setUserType('influencer')}
-                className={`flex flex-col items-center gap-2 p-3 rounded-xl border transition-all ${
-                  userType === 'influencer'
-                    ? 'bg-purple-500/20 border-purple-500 text-white'
-                    : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
-                }`}
-                data-testid="type-influencer-btn"
-              >
-                <Star className="w-5 h-5" />
-                <span className="font-medium text-sm">Influenceur</span>
-              </button>
+             
             </div>
           )}
 
@@ -355,16 +343,16 @@ const AuthPage = () => {
             {isLogin ? (
               <>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                  <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+                  <label className="block font-medium text-black mb-2">Email</label>
+                  <div className="relative bg-black">
+                 
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="input-dark w-full pl-12"
+                      className="input-dark w-full pl-12 bg-black text-black"
                       placeholder="exemple@email.com"
                       data-testid="input-email"
                     />
@@ -372,16 +360,16 @@ const AuthPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Mot de passe</label>
-                  <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+                  <label className="block text-sm font-medium text-black mb-2">Mot de passe</label>
+                  <div className="relative bg-black">
+                    
                     <input
                       type={showPassword ? 'text' : 'password'}
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
                       required
-                      className="input-dark w-full pl-12 pr-12"
+                      className="input-dark w-full pl-12 bg-black"
                       placeholder="••••••••"
                       data-testid="input-password"
                     />
@@ -405,90 +393,55 @@ const AuthPage = () => {
               <>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Prénom *</label>
+                    <label className="block text-black font-medium text-black-300 mb-2">Prénom *</label>
                     <div className="relative">
-                      <UserCircle className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+                      <UserCircle className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black-500" />
                       <input
                         type="text"
                         name="first_name"
                         value={formData.first_name}
                         onChange={handleChange}
                         required
-                        className="input-dark w-full pl-12"
+                        className="input-dark w-full pl-12 bg-black"
                         placeholder="Jean"
                         data-testid="input-first-name"
+                         style={{color:'black'}}gg
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Nom *</label>
+                    <label className="block text-black font-medium text-black-300 mb-2">Nom *</label>
                     <input
                       type="text"
                       name="last_name"
                       value={formData.last_name}
                       onChange={handleChange}
                       required
-                      className="input-dark w-full"
+                      className="input-dark w-full bg-black"
                       placeholder="Dupont"
                       data-testid="input-last-name"
+                       style={{color:'black'}}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Téléphone</label>
+                  <label className="block text-black font-medium mb-2">Téléphone</label>
                   <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="input-dark w-full pl-12"
+                      className="input-dark w-full pl-12 text-black"
                       placeholder="+41 XX XXX XX XX"
                       data-testid="input-phone"
-                    />
+                      style={{color:'black'}}
+     />
                   </div>
                 </div>
-
-                {userType === 'entreprise' && (
-                  <>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Nom de l'entreprise *</label>
-                      <div className="relative">
-                        <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-                        <input
-                          type="text"
-                          name="business_name"
-                          value={formData.business_name}
-                          onChange={handleChange}
-                          required
-                          className="input-dark w-full pl-12"
-                          placeholder="Ma Super Entreprise"
-                          data-testid="input-business-name"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Catégorie</label>
-                      <select
-                        name="business_category"
-                        value={formData.business_category}
-                        onChange={handleChange}
-                        className="input-dark w-full"
-                      >
-                        <option value="">Sélectionnez une catégorie</option>
-                        <option value="beaute">Beauté & Bien-être</option>
-                        <option value="restaurant">Restaurant & Food</option>
-                        <option value="services">Services</option>
-                        <option value="commerce">Commerce</option>
-                        <option value="artisan">Artisanat</option>
-                        <option value="sante">Santé</option>
-                        <option value="autre">Autre</option>
-                      </select>
-                    </div>
-                  </>
-                )}
+              
 
                 {userType === 'influencer' && (
                   <>
@@ -596,7 +549,7 @@ const AuthPage = () => {
             ) : (
               <>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Email *</label>
+                  <label className="block text-sm font-medium text-black mb-2">Email *</label>
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                     <input
@@ -608,12 +561,13 @@ const AuthPage = () => {
                       className="input-dark w-full pl-12"
                       placeholder="exemple@email.com"
                       data-testid="input-email"
+                      style={{color: 'black'}}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Mot de passe *</label>
+                  <label className="block text-sm font-medium text-black mb-2">Mot de passe *</label>
                   <div className="relative">
                     <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                     <input
@@ -625,6 +579,7 @@ const AuthPage = () => {
                       className="input-dark w-full pl-12 pr-12"
                       placeholder="Minimum 8 caractères"
                       data-testid="input-password"
+                       style={{color: 'black'}}
                     />
                     <button
                       type="button"
@@ -654,7 +609,7 @@ const AuthPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Confirmer le mot de passe *</label>
+                  <label className="block text-sm font-medium text-black mb-2">Confirmer le mot de passe *</label>
                   <div className="relative">
                     <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                     <input
@@ -663,8 +618,9 @@ const AuthPage = () => {
                       value={formData.confirmPassword}
                       onChange={handleChange}
                       required
-                      className="input-dark w-full pl-12"
+                      className="input-dark w-full pl-12 bg-black"
                       placeholder="Répétez le mot de passe"
+                      style={{color:'black'}}
                     />
                     {formData.confirmPassword && formData.password === formData.confirmPassword && (
                       <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" />
@@ -675,17 +631,17 @@ const AuthPage = () => {
                 <div className="p-4 bg-[#0047AB]/10 rounded-xl border border-[#0047AB]/20">
                   <div className="flex items-center gap-2 text-[#0047AB] mb-2">
                     <Shield className="w-4 h-4" />
-                    <span className="text-sm font-medium">Sécurité renforcée</span>
+                    <span className="text-black font-medium">Sécurité renforcée</span>
                   </div>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-black">
                     Votre mot de passe est chiffré et stocké de manière sécurisée. Nous ne le partagerons jamais.
                   </p>
                 </div>
 
                 {/* Referral Code Field */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
-                    <Gift className="w-4 h-4 inline mr-2" />
+                  <label className="block text-sm text-black mb-2">
+                    <Gift className="w-4 h-4 inline mr-2 text-black "/>
                     Code de parrainage (optionnel)
                   </label>
                   <input

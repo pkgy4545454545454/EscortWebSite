@@ -994,7 +994,6 @@ const ClientDashboard = () => {
       items: [
         { id: 'cashback', label: 'Mon cash-back', icon: Wallet, notifKey: 'cashback' },
         { id: 'parrainage', label: 'Parrainage', icon: Gift, notifKey: 'referral' },
-        { id: 'premium', label: 'Mon Premium', icon: Crown, notifKey: 'premium' },
         { id: 'offres', label: 'Mes offres du moment', icon: Target, notifKey: 'offers' },
       ]
     },
@@ -1341,20 +1340,30 @@ const ClientDashboard = () => {
               {/* Premium CTA */}
               {!user?.is_premium && (
                 <div className="card-service rounded-xl p-8 bg-gradient-to-r from-[#0047AB]/20 to-[#D4AF37]/20 border border-[#D4AF37]/30">
-                  <div className="flex items-center gap-6">
-                    <div className="p-4 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#0047AB]">
+                  <div className="flex items-center gap-6 vip">
+                    <div className="p-4 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#0047AB] vipmobile">
                       <Crown className="w-8 h-8 text-white" />
                     </div>
                     <div className="flex-1">
                       <h2 className="text-xl font-bold text-yellow-400 mb-2">Passez V.I.P</h2>
-                      <p className="text-gray-400">Accédez à des offres exclusives, un service premium et jusqu'à 15% de cashback.</p>
+                      <p className="text-gray-400">Accédez à des offres exclusives,Gallerie vidéos illimité, un service premium et jusqu'à 15% de cashback.</p>
                     </div>
-                    <button 
-                      onClick={() => setActiveTab('premium')} 
-                      className="btn-primary" 
-                      data-testid="upgrade-premium"
+                    <br></br>
+                    <button
+                      style={{
+                        backgroundColor: "#a16207",
+                        padding: "10px",
+                        border: "2px solid #facc15",
+                        animation: "glow 1.5s infinite",
+                        cursor: "pointer"
+                      }}
                     >
-                      Découvrir
+                      <a
+                        href="https://esclavaescort.ch/vip.php"
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        PASSEZ V.I.P
+                      </a>
                     </button>
                   </div>
                 </div>
@@ -2569,7 +2578,7 @@ const ClientDashboard = () => {
                 <p className="text-gray-400 mb-4">Solde cash-back disponible</p>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 rounded-full mb-6">
                   <TrendingUp className="w-4 h-4 text-green-500" />
-                  <span className="text-green-500 font-semibold">10% de cashback sur tous vos achats !</span>
+                  <span className="text-green-500 font-semibold">10% de cashback sur votre abonnement V.I.P !</span>
                 </div>
                 
                 {/* Withdraw Button */}
@@ -2865,15 +2874,15 @@ const ClientDashboard = () => {
                 <ul className="space-y-2 text-sm text-gray-400">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span><strong className="text-white">10% de cashback</strong> sur chaque commande et formation achetée</span>
+                    <span><strong className="text-white">10% de cashback</strong> tout les mois selon le montant de votre abonnement !</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span>Le cashback est <strong className="text-white">crédité automatiquement</strong> après chaque achat</span>
+                    <span>Le cashback est <strong className="text-white">crédité chaque mois</strong> automatiquement</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span>Utilisez votre cashback pour <strong className="text-white">réduire vos prochains achats</strong></span>
+                    <span>Retirez votre cashback des le seuil de 50CHF atteint ! </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
@@ -4302,7 +4311,7 @@ const ClientDashboard = () => {
                     <button disabled className="w-full py-2 bg-[#D4AF37]/20 text-[#D4AF37] rounded-lg">Plan actuel</button>
                   ) : (
                     <button onClick={() => handleUpgradePremium('vip')} className="w-full py-2 bg-[#D4AF37] text-black rounded-lg hover:bg-[#E5C048] transition-colors font-semibold">
-                      Passer VIP
+                      Passerrr VIP
                     </button>
                   )}
                 </div>

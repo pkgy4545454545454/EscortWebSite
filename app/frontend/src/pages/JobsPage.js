@@ -55,49 +55,13 @@ const JobsPage = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 h-full flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Offres d'emploi
+            Offres de tournages
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl">
-            Découvrez les opportunités de carrière chez nos partenaires premium
+            Postulez pour participer a mes prochains tournages videos X
           </p>
         </div>
       </div>
-
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        {/* Filters */}
-        <div className="card-service rounded-xl p-4 mb-8">
-          <div className="flex flex-wrap gap-4 items-center">
-            <div className="flex-1 min-w-[200px] relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Rechercher un poste..."
-                value={filters.search}
-                onChange={(e) => setFilters({...filters, search: e.target.value})}
-                className="input-dark w-full pl-10"
-              />
-            </div>
-            <select
-              value={filters.type}
-              onChange={(e) => setFilters({...filters, type: e.target.value})}
-              className="input-dark min-w-[150px]"
-            >
-              <option value="">Tous les types</option>
-              <option value="full_time">CDI</option>
-              <option value="part_time">Temps partiel</option>
-              <option value="contract">CDD</option>
-              <option value="internship">Stage</option>
-              <option value="freelance">Freelance</option>
-            </select>
-            <input
-              type="text"
-              placeholder="Ville..."
-              value={filters.location}
-              onChange={(e) => setFilters({...filters, location: e.target.value})}
-              className="input-dark min-w-[150px]"
-            />
-          </div>
-        </div>
 
         {/* Results */}
         <div className="mb-4 text-gray-400">
@@ -175,7 +139,7 @@ const JobsPage = () => {
           </div>
         )}
       </div>
-    </div>
+
   );
 };
 

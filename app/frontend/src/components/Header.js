@@ -51,10 +51,9 @@ const Header = () => {
 
   const navLinks = [
    
-    { path: '/products', label: 'Films X', className: 'text-white-400' },
-    { path: '/entreprises', label: 'Scénario X', className: 'text-white-400' },
-    { path: '/dashboard/client/', label: 'Devenir V.I.P', className: 'text-pink-400 ' },
-    { path: '/cart', label: 'Panier', className: 'text-pink-400'}
+   
+    
+
     
  
  
@@ -74,7 +73,7 @@ const Header = () => {
             <Link to="/" className="flex-shrink-0" data-testid="logo-link">
               <img 
                 src="/esclava.png" 
-                alt="Titelli"
+                alt=""
                 className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
               />
             </Link>
@@ -118,8 +117,19 @@ const Header = () => {
                 </Link>
               ))}
               
-            
-            
+            <a href='https://esclavaescort.ch/connvid.php' style={{color:'yellow'}}>
+              Coin V.I.P
+
+            </a>
+            <a href='https://esclavaescort.ch/punition.php' style={{color:'red'}}>
+              Coin <span style={{color:'red'}}>Extremes</span>
+
+            </a>
+             <a href='https://esclavaescort.ch/indroul.php' style={{color:'green'}}>
+              Coin <span style={{color:'green'}}>Jeux</span>
+
+            </a>
+
             </nav>
           </div>
 
@@ -130,7 +140,7 @@ const Header = () => {
               <HandCoins className="w-5 h-5" />
             </Link>
 
-            <Link to="/cart" className="p-2 text-amber-400 hover:text-amber-300 hidden sm:block" data-testid="cart-link">
+            <Link to="/cart" className="p-2 text-amber-400 hover:text-amber-300 sm:block" data-testid="cart-link">
               <ShoppingCart className="w-5 h-5" />
             </Link>
 
@@ -171,12 +181,7 @@ const Header = () => {
                         <span>Client</span>
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link to="/inscription-entreprise" className="flex items-center gap-2 cursor-pointer">
-                        <Building2 className="w-4 h-4 text-amber-400" />
-                        <span>Entreprise</span>
-                      </Link>
-                    </DropdownMenuItem>
+                 
                   </>
                 )}
               </DropdownMenuContent>
@@ -207,7 +212,7 @@ const Header = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`block py-3 px-4 rounded-lg text-center text-sm font-medium transition-colors ${
+                  className={`block py-3 px-4 rounded-lg text-center hidden text-sm font-medium transition-colors ${
                     isActive(link.path) 
                       ? 'bg-white/10 text-white' 
                       : link.className || 'text-gray-300 hover:bg-white/5'
@@ -219,7 +224,22 @@ const Header = () => {
        
 
               ))}
-              
+                      
+              <div style={{textAlign:'center'}}>
+                <a href='https://esclavaescort.ch/connvid.php' style={{color:'yellow',marginBottom:'5px'}}>
+              Coin V.I.P
+
+            </a> <br></br><br></br>
+            <a href='https://esclavaescort.ch/punition.php' style={{color:'red'}}>
+              Coin <span style={{color:'red'}}>Extremes</span>
+
+            </a><br></br><br></br>
+             <a href='https://esclavaescort.ch/indroul.php' style={{color:'green'}}>
+              Coin <span style={{color:'green'}}>Jeux</span>
+
+            </a>
+
+              </div>
               {/* Pub IA Links */}
              
 
@@ -227,23 +247,11 @@ const Header = () => {
               <div className="pt-2 border-t border-white/10 mt-2">
                  <Link to="/cart" className="p-2 text-amber-400 hover:text-amber-300 hidden sm:block" data-testid="cart-link">
                  Panier
-              <ShoppingCart className="w-5 h-5" />
-            </Link>
+                  <ShoppingCart className="w-5 h-5" />
+                </Link>
 
-                <Link
-                  to="/cashback"
-                  className="block py-3 px-4 rounded-lg text-center text-sm font-medium text-amber-400 hover:bg-white/5"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Cashback
-                </Link>
-                <Link
-                  to="/wishlist"
-                  className="block py-3 px-4 rounded-lg text-center text-sm font-medium text-gray-300 hover:bg-white/5"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Mes Favoris
-                </Link>
+         
+          
               </div>
             </nav>
           </div>

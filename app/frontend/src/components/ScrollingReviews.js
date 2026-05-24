@@ -9,7 +9,7 @@ const sampleReviews = [
     rating: 5,
     text: 'Excellente puteee, je recommande vivement !',
     date: '15 Jan 2026',
-    enterprise: 'Spa Luxury Lausanne'
+   
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const sampleReviews = [
     rating: 5,
     text: 'clairement la best pute de geneve !!! je recommande vivement',
     date: '12 Jan 2026',
-    enterprise: 'Boutique Élégance'
+   
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const sampleReviews = [
     rating: 4,
     text: 'Très satisfait de ma rencontre dans la foret des evaux je suis venu elle ma vu jai vaincu',
     date: '10 Jan 2026',
-    enterprise: 'Restaurant Le Gourmet'
+ 
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const sampleReviews = [
     rating: 5,
     text: 'Parfait, rien à redire ! Je reviendrai sans hésiter.',
     date: '8 Jan 2026',
-    enterprise: 'Coiffure Prestige'
+   
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const sampleReviews = [
     rating: 5,
     text: 'Magnifique Bonne expérience dans l/ensemble. Je recommande à tous ceux qui cherchent une expérience de qualité.',
     date: '5 Jan 2026',
-    enterprise: 'Fitness Premium'
+   
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ const sampleReviews = [
     rating: 4,
     text: 'Un peu cher mais la qualité est clairement là aucun regret .',
     date: '3 Jan 2026',
-    enterprise: 'Auto Service Pro'
+  
   }
 ];
 

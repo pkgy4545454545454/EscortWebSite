@@ -1,13 +1,10 @@
-"""
-Payment routes for Titelli (Stripe integration).
-"""
+
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Optional
 import uuid
 import os
 from datetime import datetime, timezone
-
 from .shared import db, get_current_user, TITELLI_FEES, STRIPE_API_KEY
 from stripe_helper import StripeCheckout, CheckoutSessionRequest
 

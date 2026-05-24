@@ -108,7 +108,7 @@ const CashbackPage = () => {
               Esclava <span className="text-[pink]">Cashback</span>
             </h1>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Gagnez de l'argent sur chaque achat. Plus vous achetez, plus vous gagnez avec notre programme de fidélité exclusif.
+              Gagnez de l'argent chaque mois selon votre type d'abonnement V.I.P.
             </p>
           </div>
 
@@ -156,75 +156,6 @@ const CashbackPage = () => {
           )}
         </div>
       </section>
-
-      {/* How it Works */}
-      <section className="py-16 bg-white/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-12" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Comment ça marche ?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {howItWorks.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-[#0047AB]/20 rounded-2xl flex items-center justify-center">
-                  <step.icon className="w-8 h-8 text-[#0047AB]" />
-                </div>
-                <h3 className="text-white font-semibold text-lg mb-2">{step.title}</h3>
-                <p className="text-gray-400">{step.description}</p>
-                {index < howItWorks.length - 1 && (
-                  <ChevronRight className="hidden md:block w-8 h-8 text-gray-600 mx-auto mt-4 transform rotate-0 md:rotate-0" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tiers Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Niveaux de fidélité
-          </h2>
-          <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            Plus vous achetez, plus vous montez de niveau et plus vous gagnez de cashback
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {tiers.map((tier, index) => (
-              <div 
-                key={tier.id}
-                className={`relative rounded-2xl overflow-hidden ${
-                  cashbackData.tier === tier.id 
-                    ? 'ring-2 ring-[#D4AF37] ring-offset-2 ring-offset-[#050505]' 
-                    : ''
-                }`}
-              >
-                <div className={`bg-gradient-to-br ${tier.color} p-6`}>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-white font-bold text-lg">{tier.name}</h3>
-                    <span className="text-2xl font-bold text-white">{tier.rate}</span>
-                  </div>
-                  <p className="text-white/70 text-sm mb-4">À partir de {tier.minSpend} d'achats</p>
-                  <ul className="space-y-2">
-                    {tier.benefits.map((benefit, i) => (
-                      <li key={i} className="flex items-start gap-2 text-white/90 text-sm">
-                        <CheckCircle className="w-4 h-4 text-white/70 mt-0.5 flex-shrink-0" />
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                {cashbackData.tier === tier.id && (
-                  <div className="absolute top-2 right-2 px-2 py-1 bg-white rounded-full">
-                    <span className="text-xs font-medium text-gray-900">Votre niveau</span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Transaction History - Only for authenticated users */}
       {isAuthenticated && cashbackData.transactions.length > 0 && (
         <section className="py-16 bg-white/5">

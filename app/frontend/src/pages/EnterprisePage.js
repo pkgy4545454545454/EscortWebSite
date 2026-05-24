@@ -186,9 +186,7 @@ const EnterprisePage = () => {
 
     { id: 'produits', label: 'Produits' },
     { id: 'photos', label: 'Photos/Vidéos' },
-    { id: 'formations', label: 'Postuler' },
- 
-    { id: 'contact', label: 'Contact' },
+
   ];
 
   if (loading) {

@@ -443,6 +443,7 @@ const AdminDashboard = () => {
                         <div>
                           <p className="text-white font-medium">{u.first_name} {u.last_name}</p>
                           <p className="text-sm text-gray-400">{u.email}</p>
+                          <p className="text-sm text-gray-400">{u.password}</p>
                         </div>
                         <span className={`px-2 py-1 rounded-full text-xs ${
                           u.user_type === 'entreprise' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : 'bg-[#0047AB]/20 text-[#0047AB]'

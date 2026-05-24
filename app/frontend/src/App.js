@@ -9,7 +9,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import SplashScreen from './components/SplashScreen';
 
-// Pages
 import HomePage from './pages/HomePage';
 import AuthPage from './pages/AuthPage';
 import ServicesPage from './pages/ServicesPage';
@@ -95,6 +94,7 @@ function AppRoutes() {
   return (
     <Routes>
       {/* Public Routes */}
+     
       <Route path="/" element={<MainLayout><HomePage /></MainLayout>} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/inscription-entreprise" element={<MainLayout showFooter={false}><EnterpriseRegistrationPage /></MainLayout>} />

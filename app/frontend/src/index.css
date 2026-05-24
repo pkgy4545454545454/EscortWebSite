@@ -156,7 +156,7 @@ code, pre {
   background: white;
   color: black;
   padding: 12px 32px;
-  border-radius: 9999px;
+
   font-weight: 500;
   transition: all 0.3s ease;
 }
@@ -614,11 +614,26 @@ code, pre {
 .animate-scroll-x:hover {
   animation-play-state: paused;
 }
+.pixelated {
+  image-rendering: pixelated;
+}
+
 
 /* ========================================
    RESPONSIVE IMPROVEMENTS
    ======================================== */
-
+     @keyframes glow {
+        0% {
+          box-shadow: 0 0 5px #facc15, 0 0 10px #facc15;
+        }
+        50% {
+          box-shadow: 0 0 20px #facc15, 0 0 40px #facc15;
+        }
+        100% {
+          box-shadow: 0 0 5px #facc15, 0 0 10px #facc15;
+        }
+      }
+    
 /* Mobile-first responsive utilities */
 @media (max-width: 640px) {
   .btn-primary, .btn-secondary {
@@ -642,6 +657,11 @@ background-color: rgba(255, 255, 255, 0.726) !important;
   .space-y-6 > * + * {
     margin-top: 1rem;
   }
+  .meskiffS{
+
+display: none !important;
+background-color: rgba(255, 255, 255, 0.726) !important;
+  }
 }
 
 /* Tablet responsive */
@@ -649,8 +669,28 @@ background-color: rgba(255, 255, 255, 0.726) !important;
   .profile-grid {
     grid-template-columns: 1fr 1fr;
   }
+  .tit{
+
+padding: 0px !important;
+
+  }
+
+}
+.image-clignote  {
+   animation-duration: .8s;
+   animation-name: clignoter;
+   animation-iteration-count: infinite;
+   transition: none;
+   color: red;
+   box-shadow: 20px 20px 70px red;
+   text-shadow: 20px 20px 20px rgb(0, 0, 0);
 }
 
+@keyframes clignoter {
+  0%   { opacity:1; }
+  40%   {opacity:0; }
+  100% { opacity:1; }
+}
 /* Dashboard sidebar responsive */
 @media (max-width: 1024px) {
   .dashboard-sidebar {
@@ -708,12 +748,7 @@ background-color: rgba(255, 255, 255, 0.726) !important;
 .panoramic-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(5, 5, 5, 0.3) 0%,
-    rgba(5, 5, 5, 0.5) 50%,
-    rgba(5, 5, 5, 0.95) 100%
-  );
+
   z-index: 1;
 }
 
@@ -773,5 +808,21 @@ background-color: rgba(255, 255, 255, 0.726) !important;
   .comment-card {
     width: 280px;
     padding: 16px;
+  }
+    .vip {
+
+display: block !important;
+margin: auto;
+  text-align: center;
+
+  }
+  .vipmobile {
+
+
+max-width: 70px;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+
   }
 }

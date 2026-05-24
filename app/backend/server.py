@@ -1141,8 +1141,8 @@ PREMIUM_PLANS = {
         "price": 29.99,
         "cashback_rate": 0.10,  # 10%
         "features": [
-            "Accès a mes vidéos X",
-            "Messagerie",
+            "Accès a mes videos X en illimité",
+            "Sexting en illimité",
             "10% cashback",
             "Offres exclusives",
             "Badge Premium"
@@ -1156,7 +1156,7 @@ PREMIUM_PLANS = {
          "Tout Premium +",
             "15% cashback",
             "Accés a tout les services , videos, films, scénarios en illimité",
-            "Accès événements VIP",
+            "Accès événements scénarios VIP",
             "Réductions partenaires",
             "Badge VIP exclusif",
             "sexting illimitée",
@@ -1456,6 +1456,17 @@ async def update_enterprise(enterprise_id: str, data: dict, current_user: dict =
     
     await db.enterprises.update_one({"id": enterprise_id}, {"$set": data})
     return {"message": "Profil mis à jour"}
+
+# ============ Gallerie =============
+@api_router.get("/gallerie")
+async def list_gallerie():
+    try:
+        gallerie = await db.gallerie.find({}, {"_id": 1, "images": 1, "type": 1}).to_list(500)
+        return {"images": gallerie, "total": len(gallerie)}
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return {"error": str(e)}
 
 # ============ SERVICES/PRODUCTS ROUTES ============
 
@@ -1988,8 +1999,8 @@ async def create_checkout(
     
     # Get frontend origin from referer or use base_url
     origin = request.headers.get('origin', host_url.replace('/api', ''))
-    success_url = f"{origin}/payment/success?session_id={{CHECKOUT_SESSION_ID}}"
-    cancel_url = f"{origin}/payment/cancel"
+    success_url='https://pkgyweb.com',
+    cancel_url='https://pkgyweb.com/vip.php',
     
     checkout_request = CheckoutSessionRequest(
         amount=float(final_amount),
